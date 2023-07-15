@@ -30,6 +30,9 @@ const AuthContextProvider: React.FC<Props> = ({children}) => {
         }   
     }
 
+
+
+
     const authorizeToken = async (): Promise<void> => {
         const token: string | null = localStorage.getItem("token")
         try {

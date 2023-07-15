@@ -1,0 +1,237 @@
+.landing-page>*{
+    min-height: 80vh;
+    margin: auto;
+    max-width: min(75rem, 100vw);
+    padding: 1rem;
+}
+
+
+.hero-container{
+    padding-left: 6.25rem;
+    min-height: 80vh;
+    background-size: 30rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background-image: url("../../../public/assets/hero.png");
+    background-repeat: no-repeat;
+    background-position:
+    top right,
+    0px 0px;
+}
+
+.hero-container span{
+    text-align: left;
+}
+
+h1{
+    font-size: 80px;
+    font-weight: 400;
+    max-width: 50rem;
+    text-align: left;
+    line-height: 88px;
+    margin-bottom: 1rem;
+}
+
+.why-us-container{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    text-align: right;
+}
+
+.why-us-container h2{
+    margin-bottom: 1rem;
+    font-size: 3rem;
+    font-weight: 400;
+}
+
+.why-us-container p{
+    font-size: 1.25rem;
+    font-weight: 700;
+    max-width: 42.5rem;
+}
+
+
+.btn-signin, .btn-signup{
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    padding: 1rem .5rem;
+    width: 10rem;
+    border: none;
+    border-radius: .5rem;
+    margin: .5rem;
+}
+
+.btn-signup{
+    background-color: black;
+    
+}
+
+.btn-signin{
+    background-color: rgb(120, 139, 255);
+}
+
+
+.client-stats-container{
+    display: flex;
+    justify-content: center;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+
+.stats-card{
+    display: flex;
+    flex-direction: column;
+    width: 20rem;
+    max-width: calc(33vw - 1.5rem);
+    background-color: var(--color-background-darker);
+    border-radius: 2.5rem;
+    align-items: center;
+    padding: 4rem;
+}
+
+.stats-card h2{
+    font-size: 3rem;
+    font-weight: 400;
+    margin: 1rem;
+}
+
+.stats-card img{
+    width: 10rem;
+}
+
+.stats-card b{
+    flex-grow: 1;
+}
+
+.second-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding-left: 6.25rem;
+}
+
+.second-container h2{
+    font-size: 3rem;
+    text-align: left;
+    max-width: 50rem;
+}
+
+.second-container span{
+    margin-top: -2rem;
+}
+
+.image-row{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: fit-content;
+    margin-bottom: 4rem;
+}
+
+.image-row img{
+    width: 8rem;
+}
+
+.testimonials-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.testimonial-card{
+    padding: 3rem 1rem;
+    background-color: var(--color-background-darker);
+}
+
+.testimonial-card{
+    border-radius: 2.5rem;
+}
+
+.testimonial-card img{
+   background-color: var(--color-background);
+   border-radius: 1rem;
+   height: 15rem;
+   padding: 2rem 0;
+   width: calc(100% - 4rem);
+   margin: 0;
+   object-fit: contain;
+}
+
+.testimonial-card p{
+    font-weight: 700;
+}
+
+.testimonial-card span{
+    font-weight: 100;
+    font-size: 1.5rem;
+}
+
+@media screen and (50rem <= width < 75rem) {
+    .hero-container{
+        background-size: contain;
+    }
+    h1{
+        font-size: 3rem;
+        line-height: 3.3rem;
+    }
+    b{
+        height: 2rem;
+    }
+    .no-tablet{
+        display: none;
+    }
+  }
+
+  @media screen and (width <50rem){
+
+    h1{
+        font-size: 2rem;
+        line-height: 2.2rem;
+        margin-inline: 1rem;
+    }
+    .client-stats-container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        height: fit-content;
+    }
+    .stats-card{
+        width: calc(100vw - 2rem);
+        max-width: calc(100vw - 2rem);
+    }
+    .why-us-container{
+        text-align: center;
+    }
+    .btn-signin, .btn-signup{
+        width: calc(100vw - 1rem);
+    }
+    .hero-container, .second-container{
+        padding-left: 0;
+    }
+    .second-container h2{
+        font-size: 2rem;
+        margin-left: 1rem;
+        margin-bottom: 2.5rem;
+    }
+    .hero-container{
+        background-size: contain;
+    }
+    .no-mobile{
+        display: none;
+    }
+    .image-row{
+        margin-block: 2rem;
+    }
+    .testimonials-container{
+        flex-direction: column;
+    }
+  }
+

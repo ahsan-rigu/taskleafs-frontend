@@ -6,12 +6,14 @@ import LandingPage from './Pages/LandingPage/LandingPage';
 
 function App() {
   return (
+    <>
     <main className="App">
       <Routes>
         <Route path='/' element={<LandingPage/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>
       </Routes>
     </main>
+    </>
   );
 }
 
