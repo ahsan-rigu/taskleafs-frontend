@@ -12,7 +12,7 @@ const AuthContextProvider: React.FC<Props> = ({children}) => {
 
     const signIn = async (username: string, password: string): Promise<{message: string}> => {
         try {
-            const {data} = await axios.post<{message: string, token: string}>(`http://localhost:8080/api/user/sign-in`, {username, password})
+            const {data} = await axios.post<{message: string, token: string}>(`${process.env.REACT_APP_API_URL}/api/user/sign-in`, {username, password})
             setToken(token)
             return {message: data.message}
         } catch (error) {
@@ -20,10 +20,9 @@ const AuthContextProvider: React.FC<Props> = ({children}) => {
         }     
     }
 
-
     const signUp = async (username: string, password: string, name: string, profilePicture: string): Promise<{message: string}> => {
         try {
-            const {data} = await axios.post<{message: string}>(`http://localhost:8080/api/user/sign-up`, {username, password, profilePicture, name})
+            const {data} = await axios.post<{message: string}>(`${process.env.REACT_APP_API_URL}/api/user/sign-up`, {username, password, profilePicture, name})
             signIn(username, password)
             return {message: data.message}
         } catch (error) {
@@ -35,7 +34,7 @@ const AuthContextProvider: React.FC<Props> = ({children}) => {
         const token: string | null = localStorage.getItem("token")
         try {
             if(token){
-                const {data} = await axios.post<{message: string}>(`http://localhost:8080/api/user/authorize-token`, {token})
+                const {data} = await axios.post<{message: string}>(`${process.env.REACT_APP_API_URL}/api/user/authorize-token`, {token})
                 setToken(token)
                 //toast 
                 console.log(data.message)
