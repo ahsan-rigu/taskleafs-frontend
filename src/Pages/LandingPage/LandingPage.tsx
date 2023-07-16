@@ -1,11 +1,16 @@
 import React from 'react'
 import { BsLinkedin, BsGithub, BsGlobe, BsFillFilePersonFill} from "react-icons/bs";
 import "./LandingPage.css"
+import ThemeButton from '../../Components/ThemeButton/ThemeButton';
 
 const LandingPage = () => {
 
   return (
     <div className='landing-page'>
+      <header>
+        <span className='Logo'>TaskLeafs</span>
+        <ThemeButton/>
+      </header>
       <section className='hero-container'>
           <h1 className='f-ll'>Revolutionize your projects with TaskLeafs™.</h1>
           <span>
@@ -80,12 +85,12 @@ const LandingPage = () => {
       <footer>
         <img src={`${process.env.PUBLIC_URL}/assets/hero.png`} alt='footer-img'/>
         <span>
-          <a href='google.com'><BsLinkedin /></a>
-          <a href='google.com'><BsGithub/></a>
-          <a href='google.com'><BsGlobe/></a>
-          <a href='google.com'><BsFillFilePersonFill/></a>
+          <a href='google.com' title='LinkedIn Page'><BsLinkedin size={"2rem"}/></a>
+          <a href='google.com' title='Github Page'><BsGithub size={"2rem"}/></a>
+          <a href='google.com' title='My Portfolio'><BsGlobe size={"2rem"}/></a>
+          <a href='google.com' title='My Resume'><BsFillFilePersonFill size={"2rem"}/></a>
         </span>
-        <p>
+        <p className='f-ssm'>
         © TaskLeafs™ 2023. All rights reserved.
         </p>
       </footer>

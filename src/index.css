@@ -7,6 +7,17 @@
   max-width: 100vw ;
 }
 
+a{
+  text-decoration: none;
+  color: currentColor;
+}
+
+button{
+  cursor: pointer;
+}
+
+.theme-button:checked
+
 button{
   cursor: pointer;
 }
@@ -35,9 +46,20 @@ code {
 }
 
 
-:root{
+:root:has(.theme-button:checked){
   --color-background: rgb(191, 215, 255);
   background-color:  rgb(191, 215, 255);
+  color: black;
+  --color-primary: black;
   --color-background-darker: rgb(166, 198, 255);
+}
+
+
+:root{
+  --color-background: #16003B;
+  background-color:  #16003B;
+  color: white;
+  --color-primary: white;
+  --color-background-darker: #0f002a;
 }
 

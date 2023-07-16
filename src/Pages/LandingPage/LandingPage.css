@@ -5,8 +5,42 @@
     padding: 1rem;
 }
 
+.landing-page>header{
+    height: 3rem;
+    min-height: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.landing-page>header>span{
+    font-size: 2rem;
+    font-weight: 100;
+}
+
+
+
+.landing-page footer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 2rem;
+    border-top: 1px solid var(--color-background-darker);
+}
+
+.landing-page footer a{
+    margin: .5rem;
+}
+
+.landing-page footer img{
+    width: 10rem;
+}
+
 
 .hero-container{
+    margin-top: 4rem;
     padding-left: 6.25rem;
     min-height: 80vh;
     background-size: 30rem;
