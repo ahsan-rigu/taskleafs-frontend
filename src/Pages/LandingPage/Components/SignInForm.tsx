@@ -3,6 +3,7 @@ import "./Components.css";
 import { BiHide, BiShow } from "react-icons/bi";
 import { toast } from "react-hot-toast";
 import { AuthContext } from "../../../Contexts/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   setShowSignInForm: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,17 +16,20 @@ const SignInForm: React.FC<Props> = ({
 }) => {
   const { signIn } = useContext(AuthContext);
 
+  const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState<boolean>(false);
   const [transitionState, setTransitionState] = useState<String>("entering");
 
   const handleSignIn = (event: any) => {
     event.preventDefault();
     toast.promise(signIn(event.target[0].value, event.target[1].value), {
-      loading: "Loading",
-      success: "Got the data",
-      error: "Error when fetching",
+      loading: "Signing In...",
+      success: (data: { message: string }) => {
+        navigate("/dashboard");
+        return data.message;
+      },
+      error: (data: { message: string }) => data.message,
     });
-    handleClose();
   };
 
   const handleClose = (): void => {

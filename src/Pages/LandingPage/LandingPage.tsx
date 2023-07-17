@@ -56,7 +56,7 @@ const LandingPage = () => {
                 </button>
               </>
             ) : (
-              <Link to={"/"} className="btn-link">
+              <Link to={"/dashboard"} className="btn-link">
                 {" "}
                 Open Dashboard
               </Link>
@@ -117,7 +117,7 @@ const LandingPage = () => {
                 </button>
               </>
             ) : (
-              <Link to={"/"} className="btn-link">
+              <Link to={"/dashboard"} className="btn-link">
                 {" "}
                 Open Dashboard
               </Link>

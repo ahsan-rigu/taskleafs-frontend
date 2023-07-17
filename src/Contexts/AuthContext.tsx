@@ -31,8 +31,9 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
       );
       setToken(data.token);
       return { message: data.message };
-    } catch (error) {
-      return Promise.reject(error);
+    } catch (error: any) {
+      console.log(error);
+      return Promise.reject({ message: error.response.data.message });
     }
   };
 
@@ -48,8 +49,8 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
       );
       signIn(username, password);
       return { message: data.message };
-    } catch (error) {
-      return Promise.reject(error);
+    } catch (error: any) {
+      return Promise.reject({ message: error.response.data.message });
     }
   };
 
