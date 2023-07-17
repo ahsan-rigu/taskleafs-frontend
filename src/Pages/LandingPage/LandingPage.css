@@ -99,6 +99,21 @@ h1{
     margin: .5rem;
 }
 
+.btn-link{
+    text-decoration: none;
+    background-color: rgb(120, 139, 255);
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    border-radius: .5rem;;
+    margin: .5rem;
+    display: block;
+    width: -moz-fit-content;
+    width: fit-content;
+}
+
+
 .btn-signup{
     background-color: black;
     
@@ -164,6 +179,7 @@ h1{
     display: flex;
     justify-content: center;
     align-items: center;
+    min-height: -moz-fit-content;
     min-height: fit-content;
     margin-bottom: 4rem;
 }
@@ -235,7 +251,6 @@ h1{
         justify-content: center;
         align-items: center;
         align-content: center;
-        height: fit-content;
     }
     .stats-card{
         width: calc(100vw - 2rem);
@@ -244,8 +259,8 @@ h1{
     .why-us-container{
         text-align: center;
     }
-    .btn-signin, .btn-signup{
-        width: calc(100vw - 1rem);
+    span{
+        margin-inline: auto;
     }
     .hero-container, .second-container{
         padding-left: 0;
