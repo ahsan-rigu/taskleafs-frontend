@@ -1,7 +1,7 @@
 import React from 'react'
 import "./ThemeButton.css"
 
-const ThemeButton = () => {
+const ThemeButton = ({}) => {
 
     const value: boolean = Boolean(localStorage.getItem("darkMode"))
 
@@ -15,7 +15,7 @@ const ThemeButton = () => {
 
   return (
 <label className="switch">
-    <input type="checkbox" defaultChecked={value} onChange={setTheme} className='theme-button'/>
+    <input title="change-theme" type="checkbox" defaultChecked={value} onChange={setTheme} className='theme-button'/>
     <span className="slider"></span>
 </label>
   )

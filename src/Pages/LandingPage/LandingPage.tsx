@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { BsLinkedin, BsGithub, BsGlobe, BsFillFilePersonFill} from "react-icons/bs";
 import "./LandingPage.css"
 import ThemeButton from '../../Components/ThemeButton/ThemeButton';
+import SignInForm from './Components/SignInForm';
+import SignUpForm from './Components/SignUpForm';
 
 const LandingPage = () => {
 
+  const [showSignUpForm, setShowSignUpForm] = useState<boolean>(false)
+  const [showSignInForm, setShowSignInForm] = useState<boolean>(false)
+
   return (
+    <>
+    {showSignUpForm && <SignUpForm setShowSignUpForm={setShowSignUpForm} setShowSignInForm={setShowSignInForm}/>}
+    {showSignInForm && <SignInForm setShowSignInForm={setShowSignInForm} setShowSignUpForm={setShowSignUpForm}/>}
     <div className='landing-page'>
       <header>
         <span className='Logo'>TaskLeafs</span>
@@ -15,10 +23,10 @@ const LandingPage = () => {
           <h1 className='f-ll'>Revolutionize your projects with TaskLeafs™.</h1>
           <span>
           
-          <button className='btn-signin'>
+          <button className='btn-signin' onClick={()=>setShowSignInForm(true)}>
             Log In
           </button>
-          <button className='btn-signup'>
+          <button className='btn-signup' onClick={()=>setShowSignUpForm(true)}>
             Get Started
           </button>
           </span>
@@ -95,6 +103,7 @@ const LandingPage = () => {
         </p>
       </footer>
     </div>
+    </>
   )
 }
 

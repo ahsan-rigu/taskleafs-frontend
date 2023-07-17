@@ -5,3 +5,42 @@
   min-height: 100vh;
 }
 
+.modal-backdrop{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10;
+  backdrop-filter: blur(5px);
+  transition: 1s all;
+}
+
+.modal-backdrop.entering{
+  opacity: 0;
+}
+
+.modal-backdrop.entered{
+  opacity: 1;
+}
+
+.modal-backdrop.leaving{
+  opacity: 0;
+}
+
+
+.modal-wrapper{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.modal{
+  background-color: var(--color-background-darker);
+  z-index: 11;
+}
+
