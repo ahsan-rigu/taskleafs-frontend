@@ -6,8 +6,10 @@
 }
 
 .landing-page>header{
+    min-width: 100vw;
     z-index: 1;
-    position: sticky;
+    padding: .5rem 4rem;
+    position: fixed;
     top: 0;
     height: 3rem;
     min-height: 0;
@@ -229,6 +231,10 @@ h1{
 }
 
 @media screen and (50rem <= width < 75rem) {
+    .landing-page>header{
+        padding: .5rem 2rem;
+    }
+
     .hero-container{
         background-size: contain;
     }
@@ -245,6 +251,10 @@ h1{
   }
 
   @media screen and (width <50rem){
+    .landing-page>header{
+        padding: .5rem 1rem;
+    }
+
 
     h1{
         font-size: 2rem;
@@ -263,9 +273,6 @@ h1{
     }
     .why-us-container{
         text-align: center;
-    }
-    span{
-        margin-inline: auto;
     }
     .hero-container, .second-container{
         padding-left: 0;
@@ -288,4 +295,5 @@ h1{
         flex-direction: column;
     }
   }
+
 

@@ -1,10 +1,10 @@
 import React from "react";
 import "./ThemeButton.css";
 
-const ThemeButton = () => {
+const ThemeButton: React.FC = () => {
   const value: boolean = Boolean(localStorage.getItem("darkMode"));
 
-  const setTheme = (e: { target: { checked: boolean } }) => {
+  const setTheme = (e: { target: { checked: boolean } }): void => {
     if (e.target.checked) {
       localStorage.setItem("darkMode", "true");
     } else {

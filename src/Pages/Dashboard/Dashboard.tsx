@@ -1,11 +1,12 @@
-import React from 'react'
+import React from "react";
+import Header from "../../Components/Header/Header";
 
 const Dashboard: React.FC = () => {
   return (
-    <div>
-      
+    <div className="dashboard">
+      <Header />
     </div>
-  )
-}
+  );
+};
 
-export default Dashboard
+export default Dashboard;

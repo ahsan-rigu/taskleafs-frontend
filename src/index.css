@@ -63,3 +63,9 @@ code {
   --color-background-darker: #0f002a;
 }
 
+button:has(svg){
+  background-color: transparent;
+  border: none;
+  color: currentColor;
+}
+

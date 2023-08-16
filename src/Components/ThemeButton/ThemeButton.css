@@ -5,6 +5,7 @@
   display: inline-block;
   width: 3.5em;
   height: 2em;
+  transform: scale(.74);
 }
 
 /* Hide default HTML checkbox */
@@ -16,7 +17,7 @@
 
 /* The slider */
 .slider {
-  --background: #28096b;
+  --background: var(--color-background-darker);
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -42,7 +43,7 @@
 }
 
 input:checked + .slider {
-  background-color: #522ba7;
+  background-color: rgb(120, 139, 255);
 }
 
 input:checked + .slider:before {
