@@ -15,24 +15,6 @@ import { Link } from "react-router-dom";
 const LandingPage = () => {
   const { token } = useContext(AuthContext);
 
-  const myPromise = new Promise((req, res) => {
-    setTimeout(() => console.log("resonved"), 4000);
-  });
-
-  const arr = [
-    { documentType: "passport" },
-    { documentType: "addhar card" },
-    { documentType: "addhar card" },
-    { documentType: "passport" },
-    { documentType: "voting card" },
-  ];
-
-  const result = arr.reduce(
-    (acc: any, { documentType: curr }) =>
-      acc[curr] ? { ...acc, [curr]: acc[curr] + 1 } : { ...acc, [curr]: 1 },
-    {}
-  );
-
   const [showSignUpForm, setShowSignUpForm] = useState<boolean>(false);
   const [showSignInForm, setShowSignInForm] = useState<boolean>(false);
 
