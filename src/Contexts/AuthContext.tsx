@@ -30,6 +30,8 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
         { username, password }
       );
       setToken(data.token);
+      console.log(data.token);
+      localStorage.setItem("token", data.token);
       return { message: data.message };
     } catch (error: any) {
       console.log(error);
@@ -60,14 +62,12 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
       if (token) {
         const { data } = await axios.post<{ message: string }>(
           `${process.env.REACT_APP_API_URL}/api/user/authorize-token`,
-          { token }
+          {},
+          { headers: { authorization: `Bearer ${token}` } }
         );
         setToken(token);
-        //toast
-        console.log(data.message);
       }
     } catch (error) {
-      //toast
       localStorage.removeItem("token");
       console.log(error);
     }
