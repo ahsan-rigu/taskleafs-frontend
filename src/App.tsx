@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Dashboard from "./Pages/Dashboard/Dashboard";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import { Toaster } from "react-hot-toast";
+import RequiresAuth from "./Utils/RequiresAuth";
 
 function App() {
   return (
@@ -11,7 +12,14 @@ function App() {
       <main className="App">
         <Routes>
           <Route path="/" element={<LandingPage />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Route
+            path="/dashboard"
+            element={
+              <RequiresAuth>
+                <Dashboard />
+              </RequiresAuth>
+            }
+          />
         </Routes>
         <Toaster position="top-center" reverseOrder={false} />
       </main>
