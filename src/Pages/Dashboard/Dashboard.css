@@ -1,0 +1,54 @@
+.dashboard{
+    display: flex;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.workplaces{
+    width: min(25rem, 100vw);
+    height: calc(100vh - 7rem);
+    overflow-x: hidden;
+    overflow-y: scroll;
+    background-color: var(--color-background-darker);
+    border-radius: 2rem;
+}
+
+.create-workplace{
+    background-color: var(--color-background-darker);
+    border-radius: 2rem;
+    flex-grow: 1;
+}
+
+.workplace-list{
+    padding: 1rem 1rem;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    gap: 1rem;
+}
+
+.workplaces-heading{
+    margin-top: 2.5rem;
+    font-weight: 100;
+}
+
+.dashboard .workplace-link{
+    background-color: var(--color-background);
+    padding: 1.5rem .5rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    transition: .1s ease-in-out;
+}
+
+.dashboard a.workplace-link:hover{
+    margin-top: .2rem;
+    margin-bottom: -.2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 3px;
+}
+
+
+  
+  
+  
+  
