@@ -5,6 +5,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 import { Toaster } from "react-hot-toast";
 import RequiresAuth from "./Utils/RequiresAuth";
+import Workplace from "./Pages/Workplace/Workplace";
 
 function App() {
   return (
@@ -17,6 +18,14 @@ function App() {
             element={
               <RequiresAuth>
                 <Dashboard />
+              </RequiresAuth>
+            }
+          />
+          <Route
+            path="/wp/:workplaceid"
+            element={
+              <RequiresAuth>
+                <Workplace />
               </RequiresAuth>
             }
           />
