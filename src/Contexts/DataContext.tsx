@@ -16,18 +16,21 @@ interface User {
 
 interface Data {
   user: User;
-  workplaces?: Array<Object>;
+  workplaces: Array<Object>;
 }
 
 interface Props {
   children: React.ReactNode;
 }
 
-export const DataContext = React.createContext<
-  any | { user: {}; workplaces: [] }
->({
-  user: {},
-  workplaces: [],
+interface Value {
+  data: Data | {} | any;
+  dispatch?: React.Dispatch<any>;
+}
+
+export const DataContext = React.createContext<any>({
+  data: {},
+  dispatch: undefined,
 });
 
 const DataContextProvider: React.FC<Props> = ({ children }) => {

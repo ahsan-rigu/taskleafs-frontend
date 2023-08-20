@@ -22,6 +22,10 @@ button{
   cursor: pointer;
 }
 
+input:focus, textarea:focus, button:focus, input, textarea, button{
+  color: currentColor;
+}
+
 .f-ll{
   font-family: 'Limelight', cursive;
 }
