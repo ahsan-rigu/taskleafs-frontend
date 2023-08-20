@@ -1,41 +1,57 @@
+
+
 .dashboard{
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+    grid-template-rows: repeat(auto-fit, 15rem);
+    margin: 1rem;
     gap: 1rem;
     padding: 1rem;
-}
-
-.workplaces{
-    width: min(25rem, 100vw);
-    height: calc(100vh - 7rem);
-    overflow-x: hidden;
-    overflow-y: scroll;
     background-color: var(--color-background-darker);
     border-radius: 2rem;
+    min-height: calc(100vh - 7rem);
+    box-sizing: border-box;
+
 }
 
-.create-workplace{
-    background-color: var(--color-background-darker);
-    border-radius: 2rem;
-    flex-grow: 1;
-}
-
-.workplace-list{
-    padding: 1rem 1rem;
+.create-workplace-button{
+    background-image:  linear-gradient(43deg, #95a5f8 20%, #7dcef4 46%);
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border: none;
+    transition: all .1s ease-in-out;
+    font-size: 1.2rem;
     display: flex;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    
+}
+.create-workplace-button svg{
+transition: .3s ease-in-out;
 }
 
-.workplaces-heading{
-    margin-top: 2.5rem;
-    font-weight: 100;
+.create-workplace-button:hover svg{
+    transform: rotateZ(90deg);
+    scale: 1.5;
 }
+
+
+
+.create-workplace-button:hover{
+    margin-top: .2rem;
+    margin-bottom: -.2rem;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 3px;
+}
+
+
+
+
 
 .dashboard .workplace-link{
     background-color: var(--color-background);
-    padding: 1.5rem .5rem;
+    padding: 1.5rem 1rem;
+    height: 15rem;
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: .1s ease-in-out;
@@ -46,6 +62,93 @@
     margin-bottom: -.2rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 3px;
 }
+
+.dashboard .workplace-link .workplace-name{
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+
+
+.workplaces{
+    width: min(25rem, 100vw);
+    height: calc(100vh - 7rem);
+    overflow: hidden;
+    background-color: var(--color-background-darker);
+    border-radius: 2rem;
+    padding-bottom: 1rem;
+}
+
+.create-workplace{
+    background-color: var(--color-background-darker);
+    border-radius: 2rem;
+    flex-grow: 1;
+    display: grid;
+    place-items: center;
+    padding: 2rem;
+    
+}
+
+textarea{
+    resize: none;
+}
+
+.create-workplace form{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 4rem;
+    border-radius: 2rem;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    border: 1px solid rgba(128, 128, 128, 0.396);
+    max-width: 100%;
+    background-color: var(--color-background-darker);
+    
+}
+
+.create-workplace form input{
+    background-color: var(--color-background);
+    border: none;
+    padding: .75rem 1rem;
+    border-radius: .5rem;
+    
+}
+
+.create-workplace form textarea{
+    border: none;
+    padding: 1rem;
+    background-color: var(--color-background);
+    width: 20rem;
+    height: 9rem;
+    border-radius: .5rem;
+    max-width: 100%;
+}
+
+.create-workplace form button{
+    font-size: 1rem;
+    font-weight: 700;
+    color: white;
+    padding: .75rem .25rem;
+    border: none;
+    border-radius: .5rem;
+    background-color: rgb(120, 139, 255);
+}
+
+
+@media only screen and (max-width: 35rem) {
+    .dashboard{
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(auto-fit, 4rem);
+    }
+    .dashboard .workplace-link{
+        height: 4rem;
+    }
+}
+
+
+
 
 
   
