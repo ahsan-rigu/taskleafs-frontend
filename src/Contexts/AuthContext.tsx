@@ -1,30 +1,14 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
+import { Value } from "../Schemas/AuthSchemas";
 
 interface Props {
   children: React.ReactNode;
 }
 
-interface Value {
-  token?: string | null;
-  signIn: (
-    username: string,
-    password: string
-  ) => Promise<{
-    message: string;
-  }>;
-  signUp: (
-    name: string,
-    username: string,
-    password: string
-  ) => Promise<{
-    message: string;
-  }>;
-}
-
 export const AuthContext = createContext<Value>({
   token: null,
-  signIn: async (username, passwor) => await { message: "out of context" },
+  signIn: async (username, password) => await { message: "out of context" },
   signUp: async (name, username, password) =>
     await { message: "out of context" },
 });
@@ -32,37 +16,32 @@ export const AuthContext = createContext<Value>({
 const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);
 
-  const signIn = async (
-    username: string,
-    password: string
-  ): Promise<{ message: string }> => {
+  const signIn = async (username: string, password: string) => {
     try {
-      const { data } = await axios.post<{ message: string; token: string }>(
+      const {
+        data: { message, token },
+      } = await axios.post<{ message: string; token: string }>(
         `${process.env.REACT_APP_API_URL}/api/user/sign-in`,
         { username, password }
       );
-      setToken(data.token);
-      console.log(data.token);
-      localStorage.setItem("token", data.token);
-      return { message: data.message };
+      setToken(token);
+      localStorage.setItem("token", message);
+      return { message: message };
     } catch (error: any) {
-      console.log(error);
       return Promise.reject({ message: error.response.data.message });
     }
   };
 
-  const signUp = async (
-    name: string,
-    username: string,
-    password: string
-  ): Promise<{ message: string }> => {
+  const signUp = async (name: string, username: string, password: string) => {
     try {
-      const { data } = await axios.post<{ message: string }>(
+      const {
+        data: { message },
+      } = await axios.post<{ message: string }>(
         `${process.env.REACT_APP_API_URL}/api/user/sign-up`,
         { name, username, password }
       );
       signIn(username, password);
-      return { message: data.message };
+      return { message };
     } catch (error: any) {
       return Promise.reject({ message: error.response.data.message });
     }
@@ -72,7 +51,9 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
     const token: string | null = localStorage.getItem("token");
     try {
       if (token) {
-        const { data } = await axios.post<{ message: string }>(
+        const {
+          data: { message },
+        } = await axios.post<{ message: string }>(
           `${process.env.REACT_APP_API_URL}/api/user/authorize-token`,
           {},
           { headers: { authorization: `Bearer ${token}` } }
