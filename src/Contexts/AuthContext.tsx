@@ -6,15 +6,27 @@ interface Props {
 }
 
 interface Value {
-  token: string | null;
-  signIn: Function;
-  signUp: Function;
+  token?: string | null;
+  signIn: (
+    username: string,
+    password: string
+  ) => Promise<{
+    message: string;
+  }>;
+  signUp: (
+    name: string,
+    username: string,
+    password: string
+  ) => Promise<{
+    message: string;
+  }>;
 }
 
 export const AuthContext = createContext<Value>({
   token: null,
-  signIn: () => console.log("out of context"),
-  signUp: () => console.log("out of context"),
+  signIn: async (username, passwor) => await { message: "out of context" },
+  signUp: async (name, username, password) =>
+    await { message: "out of context" },
 });
 
 const AuthContextProvider: React.FC<Props> = ({ children }) => {
