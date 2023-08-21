@@ -23,11 +23,6 @@ interface Props {
   children: React.ReactNode;
 }
 
-interface Value {
-  data: Data | {} | any;
-  dispatch?: React.Dispatch<any>;
-}
-
 export const DataContext = React.createContext<any>({
   data: {},
   dispatch: undefined,

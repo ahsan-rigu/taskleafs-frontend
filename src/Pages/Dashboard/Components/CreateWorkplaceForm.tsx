@@ -1,9 +1,12 @@
 import React from "react";
 import { DataContext } from "../../../Contexts/DataContext";
 import axios from "axios";
+import { BsPlusLg } from "react-icons/bs";
 
 const CreateWorkplaceForm = () => {
   const { dispatch } = React.useContext(DataContext);
+
+  const [showForm, setShowForm] = React.useState<boolean>(false);
 
   const createWorkplace = async (e: any) => {
     e.preventDefault();
@@ -25,14 +28,32 @@ const CreateWorkplaceForm = () => {
     }
   };
 
-  return;
-  <div className="create-workplace">
-    <form onSubmit={createWorkplace}>
-      <input type="text" placeholder="Workplace Name" />
-      <textarea placeholder="Workplace Description" />
-      <button type="submit">Create Workplace</button>
-    </form>
-  </div>;
+  return (
+    <>
+      <button
+        className="create-workplace-button f-ssm"
+        onClick={() => setShowForm(true)}
+      >
+        {<BsPlusLg size={"1.5rem"} />}
+        <span>Create Workplace</span>
+      </button>
+      {showForm && (
+        <div className="modal-wrapper">
+          <div
+            className="modal-backdrop"
+            onClick={() => setShowForm(false)}
+          ></div>
+          <div className="create-workplace modal">
+            <form onSubmit={createWorkplace}>
+              <input type="text" placeholder="Workplace Name" />
+              <textarea placeholder="Workplace Description" />
+              <button type="submit">Create Workplace</button>
+            </form>
+          </div>
+        </div>
+      )}
+    </>
+  );
 };
 
 export default CreateWorkplaceForm;

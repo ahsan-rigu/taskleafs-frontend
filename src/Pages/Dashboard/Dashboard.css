@@ -55,6 +55,9 @@ transition: .3s ease-in-out;
     border-radius: 1rem;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     transition: .1s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .dashboard a.workplace-link:hover{
@@ -64,10 +67,26 @@ transition: .3s ease-in-out;
 }
 
 .dashboard .workplace-link .workplace-name{
+    margin: 0;
     display: -webkit-box;
     -webkit-line-clamp: 1;
     -webkit-box-orient: vertical;
     overflow: hidden;
+}
+
+.dashboard .workplace-link .workplace-desc{
+    font-size: 1.1rem;
+    font-weight: 300;
+    flex-grow: 1;
+}
+
+.dashboard .workplace-link em{
+    color: rgb(135, 135, 135);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
 }
 
 
@@ -87,7 +106,6 @@ transition: .3s ease-in-out;
     flex-grow: 1;
     display: grid;
     place-items: center;
-    padding: 2rem;
     
 }
 
@@ -144,7 +162,17 @@ textarea{
     }
     .dashboard .workplace-link{
         height: 4rem;
+        padding: 1rem;
+        justify-content: center;
     }
+    .dashboard .workplace-link em, .dashboard .workplace-link .workplace-desc{
+        display: none;
+    }
+    .dashboard .workplace-link .workplace-name{
+        font-weight: 500;
+        font-size: 1rem;
+    }
+
 }
 
 
