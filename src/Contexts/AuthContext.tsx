@@ -25,7 +25,7 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
         { username, password }
       );
       setToken(token);
-      localStorage.setItem("token", message);
+      localStorage.setItem("token", token);
       return { message: message };
     } catch (error: any) {
       return Promise.reject({ message: error.response.data.message });
