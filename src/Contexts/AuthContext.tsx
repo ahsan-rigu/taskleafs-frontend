@@ -40,10 +40,10 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
         `${process.env.REACT_APP_API_URL}/api/user/sign-up`,
         { name, username, password }
       );
-      signIn(username, password);
+      await signIn(username, password);
       return { message };
     } catch (error: any) {
-      return Promise.reject({ message: error.response.data.message });
+      return Promise.reject(error.response);
     }
   };
 
