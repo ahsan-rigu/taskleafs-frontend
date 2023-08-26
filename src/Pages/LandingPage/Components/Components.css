@@ -53,7 +53,7 @@
     font-weight: 700;
     color: white;
     margin-top: .5rem;
-    padding: .75rem .25rem;
+    height: 3rem;
     border: none;
     border-radius: .5rem;
     background-color: rgb(120, 139, 255);
@@ -80,6 +80,31 @@ button.show-hide-button{
     right: .25rem;
     background-color: transparent;
     opacity: .6;
+}
+
+.error-msg{
+    color: rgb(255, 117, 117);
+    text-transform: lowercase;
+    font-size: .7rem;
+    margin-top: -.5rem;
+    margin-bottom: .5rem;
+    font-weight: 100;
+}
+
+.close-button{
+    position: absolute;
+    top: .5rem;
+    right: 1rem;
+    background-color: transparent !important;
+    border: none;
+    color: currentColor;
+    opacity: .6;
+}
+
+.neg-margin{
+    margin-top: -.75rem;
+    text-align: left;
+    margin-bottom: -1rem;
 }
 
 
