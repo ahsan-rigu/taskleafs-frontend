@@ -1,39 +1,39 @@
 import React, { useEffect } from "react";
 import axios from "axios";
 import { userReducer } from "../Reducers/userReducer";
-import { Interface } from "readline";
 import { AuthContext } from "./AuthContext";
-
-interface User {
-  name: string;
-  username: string;
-  password: undefined;
-  profilePicture: string;
-  perosonalWorkplace: Object;
-  workspaces: Array<any>;
-  invitations: Array<any>;
-}
-
-interface Data {
-  user: User;
-  workplaces: Array<Object>;
-}
+import { toast } from "react-hot-toast";
+import { User } from "../Schemas/DataSchema";
 
 interface Props {
   children: React.ReactNode;
 }
 
-export const DataContext = React.createContext<any>({
-  data: {},
-  dispatch: undefined,
-});
+type Value = {
+  data: User;
+  loading: boolean;
+  dispatch: React.Dispatch<any>;
+} | null;
 
-const DataContextProvider: React.FC<Props> = ({ children }) => {
+const initialState: User = {
+  _id: "",
+  name: "",
+  password: undefined,
+  profilePicture: "",
+  username: "",
+  workplaces: [],
+  invitations: [],
+};
+
+export const DataContext = React.createContext<any | Value>(null);
+
+const DataContextProvider = ({ children }: Props) => {
   const { token } = React.useContext(AuthContext);
-  const [data, dispatch] = React.useReducer(userReducer, {});
+  const [data, dispatch] = React.useReducer(userReducer, initialState);
+  const [loading, setLoading] = React.useState<boolean>(true);
 
   const getInitialState = async () => {
-    console.log(token);
+    setLoading(true);
     try {
       const {
         data: { user },
@@ -43,21 +43,22 @@ const DataContextProvider: React.FC<Props> = ({ children }) => {
         },
       });
       dispatch({ type: "SET_DATA", payload: user });
-    } catch (error) {
-      console.log(error);
+    } catch (error: any) {
+      toast.error(error.data.message);
     }
+    setLoading(false);
   };
 
   useEffect(() => {
     if (token) {
       getInitialState();
     }
-  }, [token]);
+  }, [token, getInitialState]);
 
   console.log(data);
 
   return (
-    <DataContext.Provider value={{ data, dispatch }}>
+    <DataContext.Provider value={{ data, dispatch, loading }}>
       {children}
     </DataContext.Provider>
   );
