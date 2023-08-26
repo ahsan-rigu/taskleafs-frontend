@@ -1,12 +1,12 @@
 export interface Value {
     token?: string | null;
-    signIn: (
+    signIn?: (
       username: string,
       password: string
     ) => Promise<{
       message: string;
     }>;
-    signUp: (
+    signUp?: (
       name: string,
       username: string,
       password: string

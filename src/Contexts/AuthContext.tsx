@@ -6,7 +6,7 @@ interface Props {
   children: React.ReactNode;
 }
 
-export const AuthContext = createContext<any | Value>(null);
+export const AuthContext = createContext<Value>({});
 
 const AuthContextProvider: React.FC<Props> = ({ children }) => {
   const [token, setToken] = useState<string | null>(null);

@@ -26,7 +26,7 @@ const SignUpForm = ({ setShowSignInForm, setShowSignUpForm }: Props) => {
     setDisableButtons(true);
     setShowLoader(true);
     try {
-      await signUp(
+      await signUp!(
         event.target[1].value,
         event.target[2].value,
         event.target[3].value

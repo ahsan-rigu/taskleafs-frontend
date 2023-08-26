@@ -1,4 +1,10 @@
-import React, { useEffect } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import axios from "axios";
 import { userReducer } from "../Reducers/userReducer";
 import { AuthContext } from "./AuthContext";
@@ -13,7 +19,7 @@ type Value = {
   data: User;
   loading: boolean;
   dispatch: React.Dispatch<any>;
-} | null;
+};
 
 const initialState: User = {
   _id: "",
@@ -25,12 +31,16 @@ const initialState: User = {
   invitations: [],
 };
 
-export const DataContext = React.createContext<any | Value>(null);
+export const DataContext = createContext<Value>({
+  data: initialState,
+  loading: true,
+  dispatch: () => {},
+});
 
 const DataContextProvider = ({ children }: Props) => {
-  const { token } = React.useContext(AuthContext);
-  const [data, dispatch] = React.useReducer(userReducer, initialState);
-  const [loading, setLoading] = React.useState<boolean>(true);
+  const { token } = useContext(AuthContext);
+  const [data, dispatch] = useReducer(userReducer, initialState);
+  const [loading, setLoading] = useState<boolean>(true);
 
   const getInitialState = async () => {
     setLoading(true);
@@ -53,9 +63,9 @@ const DataContextProvider = ({ children }: Props) => {
     if (token) {
       getInitialState();
     }
-  }, [token, getInitialState]);
+  }, [token]);
 
-  console.log(data);
+  console.log(loading);
 
   return (
     <DataContext.Provider value={{ data, dispatch, loading }}>

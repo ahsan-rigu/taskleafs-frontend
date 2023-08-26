@@ -25,7 +25,7 @@ const SignInForm = ({ setShowSignInForm, setShowSignUpForm }: Props) => {
     setDisableButtons(true);
     setShowLoader(true);
     try {
-      await signIn(event.target.username.value, event.target.password.value);
+      await signIn!(event.target.username.value, event.target.password.value);
       navigate("/dashboard");
     } catch (error: any) {
       setError(error.message);
