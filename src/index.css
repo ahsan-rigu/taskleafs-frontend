@@ -77,3 +77,15 @@ button:has(svg){
   color: currentColor;
 }
 
+.loader-container{
+  width: 100vw;
+  height: 100vh;
+  display:grid;
+  place-items: center;
+}
+
+.loader-container svg{
+  fill: white;
+}
+
+
