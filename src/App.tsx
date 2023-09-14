@@ -22,7 +22,7 @@ function App() {
             }
           />
           <Route
-            path="/wp/:workplaceid"
+            path="/wp/:workplaceId"
             element={
               <RequiresAuth>
                 <Workplace />

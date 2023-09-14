@@ -1,3 +1,5 @@
+import React from "react";
+
 export interface Value {
     token?: string | null;
     signIn?: (
@@ -13,4 +15,5 @@ export interface Value {
     ) => Promise<{
       message: string;
     }>;
+    setToken?: React.Dispatch<React.SetStateAction<string | null>>
   }

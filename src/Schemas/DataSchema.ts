@@ -5,18 +5,18 @@ export interface User {
     _id: string;
     profilePicture: string;
     workplaces: Array<any>;
-    invitations: Array<string>;
+    invitations: Array<{workplaceId: string, name: string}>;
   }
 
 export interface Task {
-    _id: string;
+    _id: any;
     task: string;
     priority: string; 
     createdBy : string;
 }
 
 export interface Leaf {
-    _id: string;
+    _id: string| any;
     leafName: string;
     tasks: Array<Task>;
 }
@@ -32,7 +32,7 @@ export interface Workplace {
     name: string;
     description: string;
     branches: Array<Branch>;
-    members: Array<{name: string; _id:string}>;
+    members: Array<{name: string; _id:string, username: string}>;
     owner: string;
 }
 

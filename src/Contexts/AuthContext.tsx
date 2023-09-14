@@ -55,16 +55,15 @@ const AuthContextProvider: React.FC<Props> = ({ children }) => {
       }
     } catch (error) {
       localStorage.removeItem("token");
-      console.log(error);
     }
   };
 
   useEffect(() => {
     authorizeToken();
-  }, []);
+  }, [token]);
 
   return (
-    <AuthContext.Provider value={{ signUp, signIn, token }}>
+    <AuthContext.Provider value={{ signUp, signIn, token, setToken }}>
       {children}
     </AuthContext.Provider>
   );

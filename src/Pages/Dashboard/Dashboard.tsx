@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import Header from "../../Components/Header/Header";
 import "./Dashboard.css";
 import { DataContext } from "../../Contexts/DataContext";

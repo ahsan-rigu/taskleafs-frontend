@@ -78,6 +78,9 @@ transition: .3s ease-in-out;
     font-size: 1.1rem;
     font-weight: 300;
     flex-grow: 1;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    
 }
 
 .dashboard .workplace-link em{
@@ -153,6 +156,11 @@ textarea{
     border: none;
     border-radius: .5rem;
     background-color: rgb(120, 139, 255);
+}
+
+.discription{
+    overflow: hidden;
+    word-wrap: ellipsis;
 }
 
 

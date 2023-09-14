@@ -1,29 +1,30 @@
-import React from "react";
-import { useParams } from "react-router-dom";
+import { useContext, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { DataContext } from "../../Contexts/DataContext";
 import "./Workplace.css";
 import Header from "../../Components/Header/Header";
-import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
 import Sidebar from "./Components/Sidebar";
-import axios from "axios";
 import { ClipLoader } from "react-spinners";
-import LeafCard from "./Components/LeafCard";
 import BranchContainer from "./Components/BranchContainer";
+import { Workplace as WorkplaceSchema } from "../../Schemas/DataSchema";
+import WorkplaceOverview from "./Components/WorkplaceOverview";
 
 const Workplace = () => {
-  const { workplaceid } = useParams();
+  const { workplaceId } = useParams();
+  const navigate = useNavigate();
+  const { data, loading } = useContext(DataContext);
+  const [currentTab, setCurrentTab] = useState("overview");
 
-  const { data, dispatch, loading } = React.useContext(DataContext);
-
-  const [currentTab, setCurrentTab] = React.useState("overview");
-
-  const workplace = data?.workplaces?.find(
-    (workplace: any) => workplace._id === workplaceid
+  const workplace: WorkplaceSchema = data.workplaces?.find(
+    ({ _id }) => _id === workplaceId
   );
 
-  const branch = workplace?.branches?.find(
-    (branch: any) => branch._id === currentTab
-  );
+  if (!workplace) {
+    navigate("/dashboard");
+    return <div></div>;
+  }
+
+  const branch = workplace?.branches?.find(({ _id }) => _id === currentTab);
 
   return loading ? (
     <div className="loader-container">
@@ -32,13 +33,20 @@ const Workplace = () => {
   ) : (
     <div>
       <Header />
-
       <div className="workplace-page">
-        <Sidebar workplace={workplace} setCurrentTab={setCurrentTab} />
+        <Sidebar
+          workplace={workplace}
+          setCurrentTab={setCurrentTab}
+          currentTab={currentTab}
+        />
         {currentTab === "overview" ? (
-          <section className="workplace-overview"></section>
+          <WorkplaceOverview workplace={workplace} />
         ) : (
-          <BranchContainer branch={branch} />
+          <BranchContainer
+            branch={branch!}
+            setCurrentTab={setCurrentTab}
+            workplaceName={workplace.name}
+          />
         )}
       </div>
     </div>

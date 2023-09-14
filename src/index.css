@@ -35,9 +35,16 @@ input:focus, textarea:focus, button:focus, input, textarea, button{
 
 }
 
+
 .f-r{
   font-family: 'Roboto', sans-serif;
 }
+
+.p0{
+  padding: .25rem;
+}
+
+
 
 body {
   margin: 0;

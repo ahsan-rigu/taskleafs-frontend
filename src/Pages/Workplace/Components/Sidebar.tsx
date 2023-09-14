@@ -1,12 +1,54 @@
-import React from "react";
-import Workplace from "../Workplace";
+import React, { useContext, useRef } from "react";
+import mongoose from "mongoose";
+import { DataContext } from "../../../Contexts/DataContext";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { GoLinkExternal } from "react-icons/go";
+import { toast } from "react-hot-toast";
 
 interface Props {
   workplace: any;
   setCurrentTab: React.Dispatch<React.SetStateAction<string>>;
+  currentTab: string;
 }
-const Sidebar: React.FC<Props> = ({ workplace, setCurrentTab }) => {
+const Sidebar: React.FC<Props> = ({ workplace, setCurrentTab, currentTab }) => {
+  const { dispatch } = useContext(DataContext);
   const [sidebarActive, setSidebarActive] = React.useState(true);
+
+  const windowWidth = useRef(window.innerWidth);
+
+  const addBranch = async (event: any) => {
+    event.preventDefault();
+    const branch = {
+      _id: new mongoose.Types.ObjectId(),
+      branchName: event.target[0].value,
+      leafs: [],
+    };
+    dispatch({
+      type: "ADD_BRANCH",
+      payload: {
+        branch: { ...branch, _id: branch._id.toString() },
+        workplaceId: workplace._id,
+      },
+    });
+    setCurrentTab(branch._id.toString());
+    if (windowWidth.current < 768) setSidebarActive(false);
+    event.target[0].value = "";
+    event.target[0].blur();
+    try {
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/branch`,
+        { branch, workplaceId: workplace._id },
+        {
+          headers: {
+            authorization: `Bearer ${localStorage.getItem("token")}`,
+          },
+        }
+      );
+    } catch (error) {
+      toast.error("Something went wrong");
+    }
+  };
 
   return (
     <div
@@ -14,6 +56,7 @@ const Sidebar: React.FC<Props> = ({ workplace, setCurrentTab }) => {
     >
       <label className="hamburger">
         <input
+          title="sidebar button"
           type="checkbox"
           onChange={(e) => setSidebarActive(e.target.checked)}
           checked={sidebarActive}
@@ -27,24 +70,52 @@ const Sidebar: React.FC<Props> = ({ workplace, setCurrentTab }) => {
         </svg>
       </label>
       <aside className="sidebar ">
+        <header>
+          <Link to="/dashboard" className="dashboard-link">
+            back to dashboard
+            <GoLinkExternal size={"1rem"} />
+          </Link>
+        </header>
         <button
-          onClick={() => setCurrentTab("overview")}
-          className="workplace-btn f-ssm"
+          className={
+            currentTab === "overview"
+              ? "active workplace-btn f-ssm"
+              : "workplace-btn f-ssm"
+          }
+          onClick={() => {
+            setCurrentTab("overview");
+            if (windowWidth.current < 768) setSidebarActive(false);
+          }}
         >
           {workplace?.name}
         </button>
         <div className="branches-list">
           {workplace?.branches.map((branch: any) => (
             <button
-              className="workplace-btn f-ssm"
+              className={
+                currentTab === branch._id
+                  ? "active workplace-btn f-ssm"
+                  : "workplace-btn f-ssm"
+              }
               key={branch._id}
-              onClick={() => setCurrentTab(branch._id)}
+              onClick={() => {
+                setCurrentTab(branch._id);
+                if (windowWidth.current < 768) setSidebarActive(false);
+              }}
             >
               {branch.branchName}
             </button>
           ))}
+          <form className="add-branch" onSubmit={addBranch}>
+            <input
+              type="text"
+              placeholder="add branch"
+              minLength={8}
+              maxLength={24}
+            />
+            <button>+</button>
+          </form>
         </div>
-        <button className="add-branch-btn f-ssm">ADD BRANCH</button>
       </aside>
     </div>
   );
