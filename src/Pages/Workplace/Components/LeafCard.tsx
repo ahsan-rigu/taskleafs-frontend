@@ -145,7 +145,7 @@ const LeafCard = ({
         leafId: _id,
         branchId,
         workplaceId,
-        task,
+        task: { ...task, _id: task._id.toString() },
       },
     });
     e.target[0].value = "";
