@@ -1,46 +1,78 @@
-# Getting Started with Create React App
+# Task Management App Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Note that this documentation is AI generated and may not be accurate.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+This Task Management App is designed to help users organize and manage their tasks efficiently. The app follows a hierarchical structure to categorize and prioritize tasks, making it easier to track progress and collaborate with team members.
 
-### `npm start`
+## Hierarchical Structure
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+The app's hierarchy is organized as follows:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+1. **Workplaces**: The top-level entity representing an organization or a major division within an organization. Each workplace can contain multiple projects.
+2. **Projects**: A project is a collection of related tasks and boards within a workplace. Projects help in organizing tasks related to a specific goal or initiative.
+3. **Boards**: Boards are used to group tasks within a project. They can represent different stages of a project, such as "To Do", "In Progress", and "Done".
+4. **Tasks**: The smallest unit in the hierarchy, tasks represent individual work items that need to be completed. Tasks can be assigned to team members, given due dates, and tracked for progress.
 
-### `npm test`
+## Features
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **Workplace Management**: Create and manage multiple workplaces to represent different organizations or divisions.
+- **Project Management**: Organize tasks into projects within each workplace.
+- **Board Management**: Use boards to categorize tasks within a project, allowing for better visualization of task progress.
+- **Task Management**: Create, assign, and track tasks. Set due dates, priorities, and statuses to ensure tasks are completed on time.
+- **Real-time Collaboration**: Using Socket.IO, multiple users can work together on projects within the same workplace, enabling real-time updates and collaboration.
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Creating a Workplace**: Start by creating a workplace to represent your organization.
+2. **Adding Projects**: Within a workplace, create projects to organize related tasks.
+3. **Setting Up Boards**: For each project, set up boards to categorize tasks by their status or other criteria.
+4. **Managing Tasks**: Add tasks to the appropriate boards, assign them to team members, and track their progress.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Directory Structure
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+- **/src**: Contains the source code for the application.
+  - **/components**: Reusable UI components.
+  - **/pages**: Page components representing different views.
+  - **/services**: Services for API calls and business logic.
+  - **/sockets**: Socket.IO configuration and event handling.
+- **/public**: Static assets and public files.
+- **/styles**: Global styles and theming.
+- **/utils**: Utility functions and helpers.
 
-### `npm run eject`
+## Running the Project
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+To run the project in different environments, follow these steps:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Development
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+To start the project in development mode, use the following command:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```bash
+npm start
+```
 
-## Learn More
+This will start a development server with hot-reloading enabled, allowing you to see changes in real-time as you edit the code.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Production
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+To build and run the project in production mode, use the following commands:
+
+1. Build the project:
+
+```bash
+npm run build
+```
+
+This will create an optimized production build of the application.
+
+2. Start the production server:
+
+```bash
+npm start
+```
+
+This will start the server using the production build.
+
+Make sure to review the `package.json` file for any additional scripts or configurations that may be specific to this project.
